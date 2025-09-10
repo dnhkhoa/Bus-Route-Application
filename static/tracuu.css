@@ -1,0 +1,234 @@
+:root {
+  --brand-600: #0d7fe6;
+  --line: #e5eaf0;
+  --soft-shadow: 0 8px 24px rgba(2, 12, 27, 0.08);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #0f172a;
+}
+.bg-city::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.85)
+    ),
+    url("/static/City.png") center/cover no-repeat;
+  pointer-events: none;
+  z-index: -1;
+}
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.topbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  z-index: 10;
+}
+.topbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--brand-600);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--soft-shadow);
+}
+.title {
+  font-weight: 600;
+}
+.search {
+  flex: 1;
+  margin: 0 12px;
+  display: flex;
+  gap: 10px;
+}
+.searchbox {
+  position: relative;
+  flex: 1;
+}
+.searchbox input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 40px 10px 12px;
+  background: #fff;
+}
+.searchbox button {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  border: none;
+  background: var(--brand-600);
+  color: #fff;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+.modes {
+  display: flex;
+  gap: 6px;
+  border: 1px solid var(--line);
+  padding: 4px;
+  border-radius: 12px;
+  background: #fff;
+}
+.mode-btn {
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+.mode-btn.active {
+  background: #f0f2f6;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: var(--soft-shadow);
+  overflow: hidden;
+}
+.card-header {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f2f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-body {
+  padding: 10px 14px;
+}
+.list {
+  max-height: 520px;
+  overflow: auto;
+}
+.item {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f7f9fc;
+  cursor: pointer;
+}
+.item:hover {
+  background: #f9fbfd;
+}
+.mapcard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--soft-shadow);
+  overflow: hidden;
+}
+#map {
+  min-height: 640px;
+  height: 640px;
+  background: #eef3ff;
+}
+.small {
+  font-size: 12px;
+  color: #667085;
+}
+.filter {
+  margin: 8px 14px;
+}
+.filter input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.hidden {
+  display: none;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #eef3ff;
+  border: 1px solid #d7e3ff;
+  font-size: 12px;
+}
+#loading {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 6px 10px;
+  box-shadow: var(--soft-shadow);
+  font-size: 12px;
+  display: none;
+}
+#hint {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: #fff;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 6px 10px;
+  box-shadow: var(--soft-shadow);
+  font-size: 12px;
+}
+#masterStatus {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 6px 10px;
+  box-shadow: var(--soft-shadow);
+  font-size: 12px;
+}
+.pill {
+  display: inline-block;
+  background: #f2f4f7;
+  border: 1px solid #e5eaf0;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-left: 8px;
+}

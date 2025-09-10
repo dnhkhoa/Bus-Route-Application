@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Route</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      crossorigin=""
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <!-- Trang 1 / Hero -->
+    <div class="hero-section" id="home">
+      <div class="overlay"></div>
+
+      <!-- Site-logo: chỉ nằm trong hero -->
+      <div class="site-logo">
+        <img src="/static/LogoUTE.png" alt="LogoUTE" />
+      </div>
+
+      <!-- Navbar (ôm sát nội dung) -->
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-links">
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#Features">Features</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <h1 class="content">Bus Route</h1>
+      <img src="/static/City.png" alt="Bus Route Planner" class="bg-image" />
+
+      <!-- search card -->
+      <div class="search-card shadow">
+        <div class="row g-3 align-items-center">
+          <div class="col-md">
+            <div class="form-control d-flex align-items-center">
+              <i class="bi bi-geo-alt text-success me-2"></i>
+              <input
+                type="text"
+                class="border-0 flex-grow-1"
+                placeholder="Select Pickup Point"
+                aria-label="Pickup point"
+              />
+            </div>
+          </div>
+
+          <div class="col-auto">
+            <button
+              class="btn btn-outline-light rounded-circle swap-button"
+              aria-label="Swap"
+            >
+              <i class="bi bi-arrow-left-right"></i>
+            </button>
+          </div>
+
+          <div class="col-md">
+            <div class="form-control d-flex align-items-center">
+              <i class="bi bi-geo text-success me-2"></i>
+              <input
+                type="text"
+                class="border-0 flex-grow-1"
+                placeholder="Select Dropping Point"
+                aria-label="Dropping point"
+              />
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <button class="btn btn-success px-4 search-btn">
+              <i class="bi bi-search"></i> Search
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bus animation (CHỈ CHẠY TRONG HERO) -->
+      <div id="bus-track" aria-hidden="true">
+        <img src="/static/Bus.png" alt="Bus" class="bus-sprite" />
+      </div>
+    </div>
+
+    <!-- Trang 2: Features -->
+    <section id="Features" class="py-5">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Features</span>
+        </div>
+
+        <div class="text-center mb-4">
+          <h2 class="hiw-title">Get Your Bus In 2 Steps</h2>
+          <p class="hiw-subtitle">
+            A quick and simple way to plan your trip — just search and choose
+            your bus.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-lg-6">
+            <div class="step-card reveal" tabindex="0">
+              <div class="step-icon">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <span class="step-badge">01</span>
+              </div>
+              <h3 class="step-title">Search Your Bus</h3>
+              <p class="step-desc">
+                Choose your origin and destination to find available buses.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <a class="step-card reveal" style="--delay: 0.1s" href="./search">
+              <div class="step-icon">
+                <i class="bi bi-bus-front-fill"></i>
+                <span class="step-badge">02</span>
+              </div>
+              <h3 class="step-title">Choose Bus Route</h3>
+              <p class="step-desc">
+                Compare options and pick the bus route that fits your time.
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trang 3: About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">About</span>
+          <h2 class="section-title">Our small team</h2>
+          <p class="section-subtitle">
+            We help you navigate the city with confidence — fast search, clear
+            routes, and delightful design tailored for everyday commuters.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card reveal">
+            <h3 class="mb-2 fw-bold">Why we built this</h3>
+            <p class="text-secondary mb-3">
+              Public transport should be effortless. That’s why we combine clean
+              UI, accurate data and modern web tech to make your bus planning a
+              breeze.
+            </p>
+
+            <ul class="about-list">
+              <li>
+                <i class="bi bi-check2-circle"></i> Real-time friendly UI with
+                smooth interactions.
+              </li>
+              <li>
+                <i class="bi bi-check2-circle"></i> Clear steps to search and
+                choose the best route.
+              </li>
+              <li>
+                <i class="bi bi-check2-circle"></i> Built for performance: fast,
+                responsive, accessible.
+              </li>
+            </ul>
+
+            <div class="stats">
+              <div class="stat">
+                <div class="num">20+</div>
+                <div class="label">Districts Covered</div>
+              </div>
+              <div class="stat">
+                <div class="num">120k</div>
+                <div class="label">Monthly Searches</div>
+              </div>
+              <div class="stat">
+                <div class="num">99.9%</div>
+                <div class="label">Uptime</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-illustration reveal delay-1">
+            <img src="/static/illustration.png" alt="About illustration" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trang 4: Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Contact</span>
+          <h2 class="section-title">Let’s get in touch</h2>
+          <p class="section-subtitle">
+            Have feedback or a partnership idea? Drop us a message — we read
+            every one.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Form -->
+          <div class="contact-card reveal">
+            <h3>Send us a message</h3>
+            <p>We’ll get back to you as soon as possible.</p>
+
+            <form
+              onsubmit="event.preventDefault(); alert('Thanks for your message!');"
+            >
+              <div class="form-group">
+                <label class="form-label" for="name">Your Name</label>
+                <input
+                  class="input"
+                  id="name"
+                  type="text"
+                  placeholder="Nguyen Van A"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input
+                  class="input"
+                  id="email"
+                  type="email"
+                  placeholder="nguyenvana@example.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="topic">Topic</label>
+                <select class="select" id="topic">
+                  <option>General</option>
+                  <option>Feature request</option>
+                  <option>Partnership</option>
+                  <option>Report an issue</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea
+                  class="textarea"
+                  id="message"
+                  placeholder="Tell us more..."
+                ></textarea>
+              </div>
+
+              <button class="btn-primary" type="submit">
+                <i class="bi bi-send-fill" aria-hidden="true"></i> Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Map FULL -->
+          <div class="map-card reveal delay-1">
+            <div id="map" aria-label="Office map"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        © <span id="y"></span> Bus Route • Built for comfy city travel
+      </div>
+    </footer>
+
+    <!-- Reveal on scroll + year -->
+    <script>
+      (function () {
+        const items = document.querySelectorAll(".reveal");
+        const io = new IntersectionObserver(
+          (entries) =>
+            entries.forEach((en) => {
+              if (en.isIntersecting) {
+                en.target.classList.add("show");
+                io.unobserve(en.target);
+              }
+            }),
+          { threshold: 0.12 }
+        );
+        items.forEach((el) => io.observe(el));
+        document.getElementById("y").textContent = new Date().getFullYear();
+      })();
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Leaflet -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      crossorigin=""
+    ></script>
+
+    <!-- Map init (HCMUTE) -->
+    <script>
+      const HCMUTE = [10.8505, 106.7717];
+      const map = L.map("map", { scrollWheelZoom: false });
+      map.setView(HCMUTE, 16);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap",
+      }).addTo(map);
+      L.marker(HCMUTE)
+        .addTo(map)
+        .bindPopup("HCMC - University of Technology and Education")
+        .openPopup();
+    </script>
+  </body>
+</html>
